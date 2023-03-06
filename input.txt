@@ -1,0 +1,22 @@
+int m1=13, m2=12, en=9;
+int pot=A0, st=0, btn=A4, x;
+void setup() {
+  pinMode(btn, INPUT); //thiết đặt btn là INPUT
+  pinMode(m1, OUTPUT);
+  pinMode(m2, OUTPUT);
+  pinMode(en, OUTPUT);
+}
+void loop() {
+  x= digitalRead(btn); //đọc tín hiệu từ btn
+  if(x == HIGH) {
+    st=analogRead(pot); //đọc giá trị điện áp của pot A0
+    analogWrite(en, st); //xuất ra giá trị xung st của chân en
+    digitalWrite(m1, HIGH); //bật motor
+    digitalWrite(m2, LOW); //tắt motor
+  }
+  else{
+    digitalWrite(m1, LOW);
+    digitalWrite(m2, LOW); 
+  }  
+
+}
